@@ -8,8 +8,8 @@ import { setToken } from '../agents/agent';
 const localStorageMiddleware = store => next => action => {
     if (action.type === LOGIN_END || action.type === SIGNUP_END) {
         if (!action.error) {
-            window.localStorage.setItem('jwt', action.payload.user.token);
-            setToken(action.payload.user.token);
+            window.localStorage.setItem('jwt', action.payload.token);
+            setToken(action.payload.token);
         }
     } else if (action.type === LOGOUT) {
         window.localStorage.setItem('jwt', '');

@@ -18,9 +18,24 @@ class Login extends React.Component {
     }
     // 箭头函数自动bind类的this
     login = () => {
+        console.log(this.props.location.previousLink)
         this.props.dispatch({type: LOGIN_START});
-        authAgent.login(this.state.username, this.state.password);
+        authAgent.login(this.state.username, this.state.password).then(
+            res => {
+               if (res.success === 1) {
+                   this.props.dispatch({type: LOGIN_END, payload:{
+                           username: this.state.username,
+                           token: res.token
+                       }})
+                   // go to the previous page user want to go
+                   this.props.history.push(this.props.location.previousLink)
+               } else {
+               // to do some alert
+               }
+            }
+        );
     }
+
     render() {
         return (
             <Container>
