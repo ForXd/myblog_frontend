@@ -5,7 +5,6 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    
     padding: 2em;
     background-color: #fdfdff;
     border-radius: 2em;
@@ -51,8 +50,7 @@ const Error = styled.div`
 
 const Container = styled.div`
   background-color: #f0f0f2;
-  width: calc(100vw - 20px);
-  height: calc(100vh - 20px);
+  height: 100vh;
   display: grid;
 `
 

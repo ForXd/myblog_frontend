@@ -10,7 +10,7 @@ const Card = styled.div`
     background-color: #fff;
     border-radius: 2em;
     box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
-    margin: auto 20px;
+    margin: 20px;
 `
 
 const UserInfo = styled.div`
