@@ -5,8 +5,9 @@ import PostPage from './pages/postPage';
 import UserPage from './pages/userPage';
 import SignupPage from './pages/signupPage';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import { store, history } from "./redux/store";
+import { Router, Route, Switch} from 'react-router-dom';
+import { store } from "./redux/store";
+import history from "./routers/history";
 import PrivateRoute from "./routers/PrivateRoute";
 
 class App extends React.Component {
@@ -19,7 +20,7 @@ class App extends React.Component {
             <Route path={"/login"} component={LoginPage}/>
             <Route path={"/signup"} component={SignupPage}/>
             <Route path={"/posts"} component={PostPage}/>
-            <PrivateRoute path={"/user/:id"} component={UserPage}/>
+            <PrivateRoute path={"/user"} component={UserPage}/>
           </Switch>
         </Router>
       </Provider>

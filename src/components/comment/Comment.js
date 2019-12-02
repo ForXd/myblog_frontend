@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, UserInfo, Function, Content, Img } from './commentStyle';
+import { connect } from 'react-redux';
 
 class Comment extends React.Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class Comment extends React.Component {
                     { this.props.comment.content }
                 </Content>
                 <Function>
+                    <button>reply</button>
                     <button>edit</button>
                     <button>delete</button>
                 </Function>
@@ -25,4 +27,4 @@ class Comment extends React.Component {
     }
 }
 
-export default Comment;
+export default connect()(Comment);

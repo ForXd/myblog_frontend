@@ -4,7 +4,7 @@ import { Card, Logo, Form, Input, Button, Container } from './authStyle';
 import { SIGNUP_START, SIGNUP_END } from '../redux/actions/actionTypes';
 import { Link } from "react-router-dom";
 import authAgent from "../agents/authAgent";
-import styled from "styled-components";
+
 
 class Signup extends React.Component {
     constructor(props) {
@@ -16,13 +16,26 @@ class Signup extends React.Component {
         }
     }
 
-    signUp = (e) => {
+    signUp = () => {
         if (this.state.password !== this.state.password_confirm) {
             alert('confirm your password again');
         } else {
             this.props.dispatch({type: SIGNUP_START});
             authAgent.register(this.state.username,
-                this.state.password);
+                this.state.password).then(
+                (res) => {
+                    if (res.success === 1) {
+                        this.props.dispatch({type: SIGNUP_END, payload:{
+                                username: this.state.username,
+                                token: res.token
+                            }})
+                        // go to the previous page user want to go
+                        this.props.history.push('/login');
+                    } else {
+                        // do some alert
+                    }
+                }
+            );
         }
     }
 

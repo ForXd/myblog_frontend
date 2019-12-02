@@ -39,9 +39,20 @@ const Container = styled.div`
     grid-template-columns: 1fr 1fr;
     position: sticky;
     top: 0px;
+    min-height: 50px;
+    transition: transform 0.6s;
 `
 const SearchBar = styled.div`
     background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
-export { DropButton, DropDownContent, DropDown, Container, SearchBar };
+const AnonymousUser = styled.div`
+    button {
+        float: right;
+    }
+`
+
+export { DropButton, DropDownContent, DropDown, Container, SearchBar, AnonymousUser };
