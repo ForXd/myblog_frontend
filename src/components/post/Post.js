@@ -1,27 +1,31 @@
-import ReactMarkdown from "react-markdown";
 import React from 'react';
 import  { Container, Content, Contents, Up } from './postStyle';
+import postAgent from "../../agents/postAgent";
 
-const input = '[TOC]\n# jjj \n# asdf\n # sdaf';
 class Post extends React.Component {
 
-    renderToc = (items) => { // 递归 render
-        return items.map(item => (
-            <a key={item.anchor} href={`#${item.anchor}`} title={item.text}>
-                {item.children && this.renderToc(item.children)}
-            </a>
-        ));
+    constructor(props) {
+        super(props);
+        this.state = {
+        }
     }
+    componentDidMount() {
+        postAgent.mdDetail(10).then(res => {
+            console.log(res);
+            console.log(res);
+            this.setState(res)
+        });
+    }
+
     render() {
         return (
             <Container>
                 <Contents>
-                    {}
+                    ?
                 </Contents>
                 <Content>
-                    <ReactMarkdown
-                        source={input}
-                    />
+                    ?
+                    {this.state.md}
                 </Content>
                 <Up>A</Up>
             </Container>

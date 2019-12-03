@@ -1,4 +1,4 @@
-import requests from "./agent";
+import {requests} from "./agent";
 
 const limit = (count, p) => `limit=${count}offset=${p ? p * count : 0}`;
 
@@ -16,7 +16,9 @@ const postAgent = {
     remove: post_id =>
         requests.delete(`/posts/${post_id}`),
     update: (post, post_id) =>
-        requests.put(`/posts/${post_id}`, post)
+        requests.put(`/posts/${post_id}`, post),
+    mdDetail: (post_id) =>
+        requests.get(`/posts/${post_id}/get_markdown_content/`)
 };
 
-export default { postAgent };
+export default postAgent;
