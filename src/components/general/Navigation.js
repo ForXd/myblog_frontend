@@ -3,6 +3,7 @@ import {DropButton, DropDownContent, DropDown, Container, SearchBar, AnonymousUs
 import { connect } from 'react-redux';
 import history from "../../routers/history";
 import { LOGOUT } from "../../redux/actions/actionTypes";
+import authAgent from "../../agents/authAgent";
 
 class Navigation extends React.Component {
     constructor(props) {
@@ -53,13 +54,19 @@ class Navigation extends React.Component {
                         <DropButton>{ this.props.current_user }</DropButton>
                         <DropDownContent>
                             <div onClick={() => history.push('/user')}>Setting</div>
-                            <div onClick={() => this.props.dispatch({type: LOGOUT})}>Logout</div>
+                            <div onClick={() => {
+                                authAgent.logout()
+                                this.props.dispatch({type: LOGOUT})
+                            }}>Logout</div>
                         </DropDownContent>
                     </DropDown>
                     :
                     <AnonymousUser>
                         <button onClick={() => {
-                            history.push('/login');}}> login </button>
+                            history.push({
+                                    pathname: "/login",
+                                    previousLink: document.location.pathname
+                                })}}> login </button>
                     </AnonymousUser>
                 }
             </Container>

@@ -8,9 +8,11 @@ class Post extends React.Component {
         super(props);
         this.state = {
         }
+
     }
+
     componentDidMount() {
-        postAgent.mdDetail(10).then(res => {
+        postAgent.mdDetail(16).then(res => {
             console.log(res);
             console.log(res);
             this.setState(res)
@@ -20,13 +22,8 @@ class Post extends React.Component {
     render() {
         return (
             <Container>
-                <Contents>
-                    ?
-                </Contents>
-                <Content>
-                    ?
-                    {this.state.md}
-                </Content>
+                <Contents dangerouslySetInnerHTML={{ __html: this.state.toc }} />
+                <Content dangerouslySetInnerHTML={{ __html: this.state.md }} />
                 <Up>A</Up>
             </Container>
       );

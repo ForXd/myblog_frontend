@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Post from "../components/post/Post";
+import Navigation from "../components/general/Navigation";
 
 class PostPage extends React.Component {
     render() {
         return (
-            <div>
-                <h2>Post Page</h2>
-            </div>
+            <Fragment>
+                <Navigation/>
+                <Post/>
+            </Fragment>
         )
     }
 }

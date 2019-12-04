@@ -5,6 +5,8 @@ import Navigation from "../components/general/Navigation";
 import { connect } from 'react-redux';
 import { APP_MOUNT } from "../redux/actions/actionTypes";
 import Post from "../components/post/Post";
+import PostEdtior from '../components/post/PostEditor';
+import PostList from "../components/post/PostList";
 
 class HomePage extends React.Component {
     componentDidMount() {
@@ -21,8 +23,13 @@ class HomePage extends React.Component {
                     </Header>
                     <Main>
                         <Post/>
-                        <CommentList comments={Array(10).fill(0)
-                            .map(() => ({'content':'123'}))}/>
+                        {/*<CommentList comments={Array(10).fill(0)*/}
+                        {/*    .map(() => ({'content':'123'}))}/>*/}
+                        <PostList category={'CSS'} posts={Array(5).fill(0)
+                            .map((item, index) => ({
+                                'title': 'title ' + index,
+                                'partial': 'content ' + index,
+                            }))}/>
                     </Main>
                     <Footer/>
                 </Container>

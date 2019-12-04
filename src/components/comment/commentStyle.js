@@ -11,6 +11,12 @@ const Card = styled.div`
     border-radius: 2em;
     box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
     margin: 20px;
+    transform: scale(0.95);
+    transition: box-shadow 0.5s, transform 0.5s;
+    :hover {
+        transform: scale(1);
+        box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+    }
 `
 
 const UserInfo = styled.div`

@@ -19,7 +19,7 @@ class App extends React.Component {
             <Route exact path={"/"} component={HomePage}/>
             <Route path={"/login"} component={LoginPage}/>
             <Route path={"/signup"} component={SignupPage}/>
-            <Route path={"/posts"} component={PostPage}/>
+            <Route path={"/post"} component={PostPage}/>
             <PrivateRoute path={"/user"} component={UserPage}/>
           </Switch>
         </Router>

@@ -1,12 +1,12 @@
 import superagentPromise from 'superagent-promise';
 import _superagent from 'superagent';
+import Cookie from 'js-cookie';
 
 const superagent = superagentPromise(_superagent, Promise);
 
 const API_ROOT = '/api';
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
-
 let token = null;
 const tokenPlugin = req => {
     if (token) {
@@ -14,15 +14,20 @@ const tokenPlugin = req => {
     }
 };
 
+
+const csrfPlugin = req => {
+    req.set('X-CSRFToken', Cookie.get('csrftoken'))
+}
+
 export const requests = {
     del: url =>
-        superagent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
+        superagent.del(`${API_ROOT}${url}`).use(csrfPlugin).then(responseBody),
     get: url =>
-        superagent.get(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
+        superagent.get(`${API_ROOT}${url}`).use(csrfPlugin).then(responseBody),
     put: (url, body) =>
-        superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
+        superagent.put(`${API_ROOT}${url}`, body).use(csrfPlugin).then(responseBody),
     post: (url, body) =>
-        superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody)
+        superagent.post(`${API_ROOT}${url}`, body).use(csrfPlugin).then(responseBody)
 };
 
 

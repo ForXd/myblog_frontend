@@ -5,13 +5,14 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
-    min-width: 75vw;
+    
 `
 
 const Contents = styled.div`
     position: sticky;
-    top: 0;
+    top: 80px;
     left: 0;
+    margin-right: 20px;    
 `
 
 const Up = styled.div`
