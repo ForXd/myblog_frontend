@@ -2,8 +2,8 @@ import {
     LOGIN_END,
     SIGNUP_END,
     LOGOUT,
-} from "../redux/actions/actionTypes";
-import { setToken } from '../agents/agent';
+} from "../actions/actionTypes";
+import { setToken } from '../../agents/agent';
 
 const localStorageMiddleware = store => next => action => {
     if (action.type === LOGIN_END || action.type === SIGNUP_END) {
