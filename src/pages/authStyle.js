@@ -20,7 +20,7 @@ const Form = styled.div`
 `;
 
 const Input = styled.input`
-  padding: 1rem;
+  padding: 0.9rem;
   border: 1px solid #999;
   margin-bottom: 1rem;
   font-size: 0.8rem;

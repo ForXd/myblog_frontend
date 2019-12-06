@@ -11,6 +11,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -22,6 +23,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -34,6 +36,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\work\react_t\blog_frontend" />
       <recent name="D:\work\react_t\blog_frontend\src" />
       <recent name="D:\work\react_t\blog_frontend\src\agents" />
     </key>
@@ -90,6 +93,7 @@
       <workItem from="1575267496811" duration="22294000" />
       <workItem from="1575382604032" duration="2257000" />
       <workItem from="1575440266826" duration="18600000" />
+      <workItem from="1575635962606" duration="13705000" />
     </task>
     <servers />
   </component>

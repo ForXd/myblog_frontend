@@ -2,10 +2,11 @@
 // sign in
 export const LOGIN_START = Symbol('user login')
 export const LOGIN_END = Symbol('user login')
+export const LOGIN_FAIL = Symbol('login fail')
 // sign up
 export const SIGNUP_START = Symbol('sign up')
 export const SIGNUP_END = Symbol('sign up')
-
+export const SIGNUP_FAIL = Symbol('sign up fail')
 
 // synchronize actions
 export const LOGOUT = Symbol('current user logout')

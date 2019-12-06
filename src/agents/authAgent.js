@@ -5,7 +5,7 @@ const authAgent = {
         requests.post('/users/login/', {username, password}),
     register: (username, password) =>
         requests.post('/users/register/', {username, password}),
-    logout: user_id =>
+    logout: () =>
         requests.get(`/users/logout/`)
 };
 

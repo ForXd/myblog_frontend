@@ -1,9 +1,11 @@
 import {
     LOGIN_START,
     LOGIN_END,
+    LOGIN_FAIL,
     LOGOUT,
     SIGNUP_START,
     SIGNUP_END,
+    SIGNUP_FAIL,
     APP_MOUNT
 } from '../actions/actionTypes';
 import jwt from 'jwt-decode';
@@ -22,6 +24,11 @@ export default (state = {
                 ...state,
                 current_user: user
             }
+        case LOGIN_FAIL:
+            return {
+                ...state,
+                is_waiting: false
+            }
         case LOGIN_START:
             return {
                 ...state,
@@ -38,6 +45,11 @@ export default (state = {
                 ...state,
                 is_waiting: true,
             };
+        case SIGNUP_FAIL:
+            return {
+                ...state,
+                is_waiting: false
+            }
         case SIGNUP_END:
             return {
                 ...state,

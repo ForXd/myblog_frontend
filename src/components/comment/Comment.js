@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, UserInfo, Function, Content, Img } from './commentStyle';
+import { Card, UserInfo, Function, Content } from './commentStyle';
 import { connect } from 'react-redux';
+import { Avatar } from "antd";
 
 class Comment extends React.Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class Comment extends React.Component {
         return (
             <Card>
                 <UserInfo>
-                    <Img src={"./logo192.png"}/>
+                    <Avatar src={"./logo192.png"}/>
                     <span>name</span>
                 </UserInfo>
                 <Content>

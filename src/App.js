@@ -9,6 +9,7 @@ import { Router, Route, Switch} from 'react-router-dom';
 import { store } from "./redux/store";
 import history from "./routers/history";
 import PrivateRoute from "./routers/PrivateRoute";
+import './App.css'
 
 class App extends React.Component {
   render() {

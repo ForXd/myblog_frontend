@@ -1,11 +1,12 @@
 import React from 'react';
 import authAgent from '../agents/authAgent';
 import { connect } from 'react-redux';
-import { LOGIN_START, LOGIN_END } from "../redux/actions/actionTypes";
+import {LOGIN_START, LOGIN_END, LOGIN_FAIL} from "../redux/actions/actionTypes";
 import {Link} from "react-router-dom";
 import ListErrors from "../components/general/ListErrors";
-import { Card, Logo, Form, Input, Button, Container } from './authStyle';
+import { Card, Logo, Form, Input, Container } from './authStyle';
 import history from "../routers/history";
+import { Button, message } from "antd";
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -36,7 +37,8 @@ class Login extends React.Component {
                        history.push('/');
                    }
                } else {
-               // to do some alert
+                  message.warn(res.message);
+                  this.props.dispatch({type: LOGIN_FAIL})
                }
             }
         );
@@ -60,12 +62,10 @@ class Login extends React.Component {
                                    this.setState({password: e.target.value})
                                }}
                                value={this.state.password} />
-                        <Button onClick={this.login}>Sign In</Button>
-                        { this.props.is_waiting &&
-                        <div>
-                            ...
-                            <div>dsf</div>
-                        </div> }
+                        <Button onClick={this.login}
+                                loading={this.props.is_waiting}
+                                shape="round"
+                                size={"large"}>Sign In</Button>
                     </Form>
                     <Link to="/signup">Don't have an account?</Link>
                 </Card>

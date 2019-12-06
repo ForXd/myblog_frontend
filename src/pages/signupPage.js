@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Card, Logo, Form, Input, Button, Container } from './authStyle';
-import { SIGNUP_START, SIGNUP_END } from '../redux/actions/actionTypes';
+import { Card, Logo, Form, Input, Container } from './authStyle';
+import {SIGNUP_START, SIGNUP_END, SIGNUP_FAIL} from '../redux/actions/actionTypes';
 import { Link } from "react-router-dom";
 import authAgent from "../agents/authAgent";
+import { Button, message } from "antd";
 
 
 class Signup extends React.Component {
@@ -18,7 +19,7 @@ class Signup extends React.Component {
 
     signUp = () => {
         if (this.state.password !== this.state.password_confirm) {
-            alert('confirm your password again');
+            message.warn('confirm your password again');
         } else {
             this.props.dispatch({type: SIGNUP_START});
             authAgent.register(this.state.username,
@@ -32,7 +33,8 @@ class Signup extends React.Component {
                         // go to the previous page user want to go
                         this.props.history.push('/login');
                     } else {
-                        // do some alert
+                        message.warn(res.message);
+                        this.props.dispatch({type: SIGNUP_FAIL})
                     }
                 }
             );
@@ -63,13 +65,17 @@ class Signup extends React.Component {
                                onChange={e => {
                                    this.setState({password_confirm: e.target.value});
                                }}/>
-                        <Button onClick={this.signUp}>Sign Up</Button>
+                        <Button onClick={this.signUp}
+                                shape={"round"}
+                                loading={this.props.is_waiting}
+                                size={"large"}>Sign Up</Button>
                     </Form>
                     <Link to="/login">Already have an account?</Link>
                 </Card>
             </Container>
         )
     }
-}
+}const mapStateToProps = state => ({ ...state.auth });
 
-export default connect()(Signup);
+
+export default connect(mapStateToProps)(Signup);

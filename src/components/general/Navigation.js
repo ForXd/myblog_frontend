@@ -1,9 +1,10 @@
 import React from 'react';
-import {DropButton, DropDownContent, DropDown, Container, SearchBar, AnonymousUser} from './navStyle';
+import {DropButton, DropDownContent, Container, SearchBar, AnonymousUser} from './navStyle';
 import { connect } from 'react-redux';
 import history from "../../routers/history";
 import { LOGOUT } from "../../redux/actions/actionTypes";
 import authAgent from "../../agents/authAgent";
+import { Menu, Dropdown, Icon, message, Button } from 'antd';
 
 class Navigation extends React.Component {
     constructor(props) {
@@ -38,6 +39,20 @@ class Navigation extends React.Component {
     }
 
     render() {
+        const onClick = ({ key }) => {
+            if (key === '1') {
+                history.push('/user');
+            } else {
+                authAgent.logout();
+                this.props.dispatch({type: LOGOUT});
+            }
+        };
+        const menu = (
+            <Menu onClick={onClick}>
+                <Menu.Item key="1">setting</Menu.Item>
+                <Menu.Item key="2">logout</Menu.Item>
+            </Menu>
+        );
         return (
             <Container id={'navigation'}>
                 <SearchBar>
@@ -50,23 +65,16 @@ class Navigation extends React.Component {
                 </SearchBar>
                 {   this.props.current_user
                     ?
-                    <DropDown>
+                    <Dropdown overlay={menu}>
                         <DropButton>{ this.props.current_user }</DropButton>
-                        <DropDownContent>
-                            <div onClick={() => history.push('/user')}>Setting</div>
-                            <div onClick={() => {
-                                authAgent.logout()
-                                this.props.dispatch({type: LOGOUT})
-                            }}>Logout</div>
-                        </DropDownContent>
-                    </DropDown>
+                    </Dropdown>
                     :
                     <AnonymousUser>
-                        <button onClick={() => {
+                        <Button onClick={() => {
                             history.push({
                                     pathname: "/login",
                                     previousLink: document.location.pathname
-                                })}}> login </button>
+                                })}}> login </Button>
                     </AnonymousUser>
                 }
             </Container>

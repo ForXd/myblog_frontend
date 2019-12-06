@@ -5,7 +5,7 @@ import Navigation from "../components/general/Navigation";
 import { connect } from 'react-redux';
 import { APP_MOUNT } from "../redux/actions/actionTypes";
 import Post from "../components/post/Post";
-import PostEdtior from '../components/post/PostEditor';
+import PostEditor from '../components/post/PostEditor';
 import PostList from "../components/post/PostList";
 
 class HomePage extends React.Component {
