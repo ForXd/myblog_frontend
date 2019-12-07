@@ -13,6 +13,7 @@ const Contents = styled.div`
     top: 80px;
     left: 0;
     margin-right: 20px;    
+    margin-top: 100px;
 `
 
 const Up = styled.div`

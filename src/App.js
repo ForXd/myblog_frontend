@@ -4,17 +4,20 @@ import HomePage from './pages/homePage';
 import PostPage from './pages/postPage';
 import UserPage from './pages/userPage';
 import SignupPage from './pages/signupPage';
-import { Provider } from 'react-redux';
 import { Router, Route, Switch} from 'react-router-dom';
-import { store } from "./redux/store";
 import history from "./routers/history";
 import PrivateRoute from "./routers/PrivateRoute";
 import './App.css'
+import {APP_MOUNT} from "./redux/actions/actionTypes";
+import { connect } from 'react-redux';
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.dispatch({type: APP_MOUNT})
+  }
+
   render() {
     return (
-      <Provider store={store}>
         <Router history={history}>
           <Switch>
             <Route exact path={"/"} component={HomePage}/>
@@ -24,9 +27,8 @@ class App extends React.Component {
             <PrivateRoute path={"/user"} component={UserPage}/>
           </Switch>
         </Router>
-      </Provider>
     );
   }
 }
 
-export default App;
+export default connect()(App);

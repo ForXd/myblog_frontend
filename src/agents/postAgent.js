@@ -17,8 +17,6 @@ const postAgent = {
         requests.delete(`/posts/${post_id}/`),
     update: (post, post_id) =>
         requests.put(`/posts/${post_id}/`, post),
-    mdDetail: (post_id) =>
-        requests.get(`/posts/${post_id}/get_markdown_content/`)
 };
 
 export default postAgent;

@@ -9,9 +9,6 @@ import PostEditor from '../components/post/PostEditor';
 import PostList from "../components/post/PostList";
 
 class HomePage extends React.Component {
-    componentDidMount() {
-        this.props.dispatch({type: APP_MOUNT});
-    }
 
     render() {
         return (
