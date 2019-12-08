@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { Container, Content, Contents, Up } from './postStyle';
 import postAgent from "../../agents/postAgent";
 import { generateToc } from "./generateToc";
@@ -7,6 +7,8 @@ import { BackTop } from "antd";
 import marked from 'marked';
 import hljs from 'highlight.js';
 import JsxParser from 'react-jsx-parser';
+import CommentList from "../comment/CommentList";
+
 const renderer = new marked.Renderer();
 renderer.heading = function(text, level, raw) {
     return `<a id="${text}" href="#${text}"><h${level}>${text}</h${level}></a>\n`;
@@ -45,6 +47,7 @@ class Post extends React.Component {
             },
         });
     }
+
     onChange = link => {
         if (link === this.state.lastLink) {
             this.setState({affix: false})
@@ -52,18 +55,24 @@ class Post extends React.Component {
             this.setState({affix: true})
         }
     };
+
     render() {
         return (
-            <Container>
-                <Contents>
+            <Fragment>
+                <Container>
+                    <Contents>
 
-                    <Anchor onChange={this.onChange} affix={this.state.affix} targetOffset={window.innerHeight/2}>
-                        <JsxParser components={{Link}} jsx={this.state.toc}/>
-                    </Anchor>
-                </Contents>
-                <Content dangerouslySetInnerHTML={{ __html: this.state.md ? marked(this.state.md) : null }} />
-                <Up><BackTop/></Up>
-            </Container>
+                        <Anchor onChange={this.onChange} affix={this.state.affix} targetOffset={window.innerHeight/2}>
+                            <JsxParser components={{Link}} jsx={this.state.toc}/>
+                        </Anchor>
+                    </Contents>
+                    <Content dangerouslySetInnerHTML={{ __html: this.state.md ? marked(this.state.md) : null }} />
+                    <Up><BackTop/></Up>
+
+                </Container>
+                <CommentList comments={Array(10).fill(0)
+                    .map(() => ({'content':'123'}))}/>
+            </Fragment>
       );
     }
 }

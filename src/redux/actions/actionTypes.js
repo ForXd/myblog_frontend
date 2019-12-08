@@ -8,6 +8,14 @@ export const SIGNUP_START = Symbol('sign up')
 export const SIGNUP_END = Symbol('sign up')
 export const SIGNUP_FAIL = Symbol('sign up fail')
 
+// fetch posts list
+export const REQUEST_POSTS = Symbol('request post list')
+export const REQUEST_END = Symbol('request post success')
+export const REQUEST_FAIL = Symbol('request fail')
+
+
+
+
 // synchronize actions
 export const LOGOUT = Symbol('current user logout')
 export const APPROVE_POST = Symbol('approve of a post')

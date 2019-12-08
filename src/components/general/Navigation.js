@@ -1,5 +1,5 @@
 import React from 'react';
-import {DropButton, DropDownContent, Container, SearchBar, AnonymousUser} from './navStyle';
+import { DropButton, Container, SearchBar, AnonymousUser } from './navStyle';
 import { connect } from 'react-redux';
 import history from "../../routers/history";
 import { LOGOUT } from "../../redux/actions/actionTypes";

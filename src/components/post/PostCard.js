@@ -11,6 +11,7 @@ class PostCard extends React.Component {
             <Card>
                 <div> { this.props.post.title }</div>
                 <div> { this.props.post.partial }</div>
+                <div> { this.props.post.postTime }</div>
             </Card>
         );
     }

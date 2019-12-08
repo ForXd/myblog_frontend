@@ -1,10 +1,8 @@
 import {requests} from "./agent";
 
-const limit = (count, p) => `limit=${count}offset=${p ? p * count : 0}`;
-
 const postAgent = {
-    all: page =>
-        requests.get(`/posts?${limit(10, page)}/`),
+    posts: page =>
+        requests.get(`/posts/?page=${page}`),
     byAuthor: author_id =>
         requests.get(`/posts/user_post?user_id=${author_id}/`),
     byCategory: category =>

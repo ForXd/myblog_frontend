@@ -6,8 +6,6 @@ function getItem(str) {
     var re = /^#+ (.+)/mg;
     var re1 = /(^#+) (.+)/;
     var items = str.match(re);
-    console.log('??')
-    console.log(items);
     var minLevel = 100;
 
     for (var i = 0; i < items.length; ++i) {
