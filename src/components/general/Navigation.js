@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropButton, Container, SearchBar, AnonymousUser } from './navStyle';
+import { DropButton, Container, SearchBar, AnonymousUser, CenterContainer } from './navStyle';
 import { connect } from 'react-redux';
 import history from "../../routers/history";
 import { LOGOUT } from "../../redux/actions/actionTypes";
@@ -55,28 +55,39 @@ class Navigation extends React.Component {
         );
         return (
             <Container id={'navigation'}>
+                <CenterContainer>
+                    <Icon type="fire"
+                          style={{ fontSize: '45px', color: '#000' }}
+                          onClick={() => {history.push('/')}}
+                    />
+                </CenterContainer>
                 <SearchBar>
                     <input type="text"
                            value={this.state.searchValue}
                            onChange={(e) => {
                                this.setState({searchValue: e.target.value})
                            }}/>
-                           <i onClick={this.search}>search</i>
+                    <Icon type="search"
+                          style={{ fontSize: '30px', color: '#000' }}
+                          onClick={this.search}/>
+
                 </SearchBar>
-                {   this.props.current_user
-                    ?
-                    <Dropdown overlay={menu}>
-                        <DropButton>{ this.props.current_user }</DropButton>
-                    </Dropdown>
-                    :
-                    <AnonymousUser>
-                        <Button onClick={() => {
-                            history.push({
-                                    pathname: "/login",
-                                    previousLink: document.location.pathname
-                                })}}> login </Button>
-                    </AnonymousUser>
-                }
+                <CenterContainer>
+                    {   this.props.current_user
+                        ?
+                        <Dropdown overlay={menu}>
+                            <DropButton>{ this.props.current_user }</DropButton>
+                        </Dropdown>
+                        :
+                        <AnonymousUser>
+                            <Button onClick={() => {
+                                history.push({
+                                        pathname: "/login",
+                                        previousLink: document.location.pathname
+                                    })}}> login </Button>
+                        </AnonymousUser>
+                    }
+                </CenterContainer>
             </Container>
         );
     }
