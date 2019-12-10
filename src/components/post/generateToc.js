@@ -7,7 +7,9 @@ function getItem(str) {
     var re1 = /(^#+) (.+)/;
     var items = str.match(re);
     var minLevel = 100;
-
+    if (items === null) {
+        return [0,[]]
+    }
     for (var i = 0; i < items.length; ++i) {
         var temp = items[i].match(re1);
         var item = {};
@@ -27,6 +29,9 @@ export function generateToc(toc) {
     var res = '';
     var lastLink = '';
     var Items = getItem(toc);
+    if (items === null) {
+        return [res, lastLink];
+    }
     var items = Items[1];
     var preLevel = 1;
     for (var i = 0; i < items.length; ++i) {

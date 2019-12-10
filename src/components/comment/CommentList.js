@@ -5,7 +5,7 @@ class CommentList extends React.Component {
     render() {
         return (
             this.props.comments.map((item, index) => (
-                <Comment comment={item}/>
+                <Comment key={item.id} comment={item}/>
             ))
         )
     }

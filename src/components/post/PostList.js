@@ -10,7 +10,7 @@ class PostList extends React.Component {
                     {
                         this.props.posts
                         && this.props.posts.map((item, index) => (
-                            <PostCard post={item}/>
+                            <PostCard key={item.id} post={item}/>
                         ))
                     }
                 </Container>

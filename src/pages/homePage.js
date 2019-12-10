@@ -23,7 +23,6 @@ class HomePage extends React.Component {
                         <h1>Home Page</h1>
                     </Header>
                     <Main>
-                        <Post/>
                         <PostList posts={this.props.items}/>
                     </Main>
                     <Footer/>

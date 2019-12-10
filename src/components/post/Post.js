@@ -22,17 +22,19 @@ class Post extends React.Component {
         super(props);
         this.state = {
             affix: true,
-            lastLink: ''
+            lastLink: '',
+            toc: ''
         }
     }
 
     componentDidMount() {
-        postAgent.detail(18).then(res => {
-            const resVal = generateToc(res.content);
-            this.setState({md:res.content});
+        if (this.props.post.content) {
+            const resVal = generateToc(this.props.post.content);
             this.setState({toc: resVal[0]});
             this.setState({lastLink: resVal[1]});
-        });
+        }
+
+
         marked.setOptions({
             renderer: renderer,
             gfm: true,
@@ -58,21 +60,20 @@ class Post extends React.Component {
 
     render() {
         return (
-            <Fragment>
-                <Container>
-                    <Contents>
-
-                        <Anchor onChange={this.onChange} affix={this.state.affix} targetOffset={window.innerHeight/2}>
-                            <JsxParser components={{Link}} jsx={this.state.toc}/>
-                        </Anchor>
-                    </Contents>
-                    <Content dangerouslySetInnerHTML={{ __html: this.state.md ? marked(this.state.md) : null }} />
-                    <Up><BackTop/></Up>
-
-                </Container>
-                <CommentList comments={Array(10).fill(0)
-                    .map(() => ({'content':'123'}))}/>
-            </Fragment>
+            <Container>
+                <Contents>
+                    <Anchor onChange={this.onChange}
+                            affix={this.state.affix}
+                            targetOffset={window.innerHeight/2}
+                    >
+                        <JsxParser components={{Link}} jsx={this.state.toc}/>
+                    </Anchor>
+                </Contents>
+                <Content dangerouslySetInnerHTML={{ __html: this.props.post.content
+                        ? marked(this.props.post.content)
+                        : null }} />
+                <Up><BackTop/></Up>
+            </Container>
       );
     }
 }

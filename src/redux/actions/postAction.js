@@ -42,7 +42,7 @@ export function fetchPosts(page) {
             }
         ).catch(
             err => {
-                console.log(err);
+                dispatch(receiveFail(err, page))
             }
         )
     }

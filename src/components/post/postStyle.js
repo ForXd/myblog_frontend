@@ -1,18 +1,17 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 3fr
     margin: 0 50px;
+    justify-content: center;
 `
 
 const Content = styled.div`
-    
+   
 `
 
 const Contents = styled.div`
-    position: sticky;
-    top: 80px;
-    left: 0;
     margin-right: 20px;    
     margin-top: 100px;
 `

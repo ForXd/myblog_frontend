@@ -1,10 +1,12 @@
-import requests from './agent';
+import {requests} from './agent';
 
 const commentAgent = {
     create: comment =>
         requests.post('/comments', comment),
     remove: comment_id =>
         requests.delete(`/comments/${comment_id}`),
+    listComment: id_list =>
+        requests.post(`/comments/by_list/`, id_list),
     byPost: post_id =>
         requests.get(`/comments/post_comment?post_id=${[post_id]}`),
     byComment: comment_id =>
@@ -15,4 +17,4 @@ const commentAgent = {
         requests.get(`/comments/${comment_id}`)
 }
 
-export default { commentAgent };
+export default  commentAgent;

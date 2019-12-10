@@ -3,6 +3,7 @@
 export const LOGIN_START = Symbol('user login')
 export const LOGIN_END = Symbol('user login')
 export const LOGIN_FAIL = Symbol('login fail')
+
 // sign up
 export const SIGNUP_START = Symbol('sign up')
 export const SIGNUP_END = Symbol('sign up')
@@ -12,6 +13,11 @@ export const SIGNUP_FAIL = Symbol('sign up fail')
 export const REQUEST_POSTS = Symbol('request post list')
 export const REQUEST_END = Symbol('request post success')
 export const REQUEST_FAIL = Symbol('request fail')
+
+// fetch comment list
+export const REQUEST_COMMENTS = Symbol('request comment list')
+export const REQUEST_COMMENTS_SUCCESS = Symbol('request comment success')
+export const REQUEST_COMMENTS_FAIL = Symbol('request comment fail')
 
 
 
